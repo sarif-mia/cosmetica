@@ -100,16 +100,17 @@
         "desktop_columns": "4",
         "tablet_columns": "3",
         "mobile_columns": "2",
-        "autoplay": false,
+        "autoplay": true,
         "autoplay_interval": 3000,
         "show_title": true,
         "show_description": true,
         "show_price": true,
-        "show_view_all": false,
+        "show_view_all": true,
         "view_all_url": "",
         "show_dots": true,
         "enable_modal": true,
-        "modal_style": "fullscreen"
+        "modal_style": "fullscreen",
+        "full_width": true
       }
     }
   },
