@@ -40,7 +40,7 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
             {% assign product = all_products[product_handle] %}
           {% endif %}
 
-          <div class="reel-card" data-reel-id="{{ block.id }}" tabindex="0" role="button" aria-label="{{ block.settings.title | escape }}">
+          <div class="reel-card" data-reel-id="{{ block.id }}" data-badge="{{ block.settings.badge }}" tabindex="0" role="button" aria-label="{{ block.settings.title | escape }}">
             <div class="reel-media-container">
               <div class="reel-media">
                 {% if block.settings.video_url != blank %}
@@ -147,7 +147,9 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <div class="reel-modal-media"></div>
+        <div class="reel-modal-media">
+          <div class="reel-modal-badge"></div>
+        </div>
         <div class="reel-modal-info">
           <h3 id="reel-modal-title" class="reel-modal-title"></h3>
           <p class="reel-modal-description"></p>
@@ -192,7 +194,8 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
           {"type":"image_picker","id":"image","label":"Image (fallback)"},
           {"type":"url","id":"video_url","label":"Video URL (mp4)"},
           {"type":"text","id":"title","label":"Title (optional)"},
-          {"type":"textarea","id":"description","label":"Description (optional)"}
+          {"type":"textarea","id":"description","label":"Description (optional)"},
+          {"type":"text","id":"badge","label":"Badge (e.g., Trending, New)"}
         ]
       }
     ],

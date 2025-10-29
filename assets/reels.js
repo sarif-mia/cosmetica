@@ -88,6 +88,7 @@
 
     // Populate modal content
     var modalMedia = modal.querySelector('.reel-modal-media');
+    var modalBadge = modal.querySelector('.reel-modal-badge');
     var modalTitle = modal.querySelector('.reel-modal-title');
     var modalDesc = modal.querySelector('.reel-modal-description');
     var modalPrice = modal.querySelector('.reel-modal-price');
@@ -118,6 +119,13 @@
     }
 
     // Set content
+    var badge = reelCard.getAttribute('data-badge');
+    if (badge && modalBadge) {
+      modalBadge.textContent = badge;
+    } else if (modalBadge) {
+      modalBadge.textContent = '';
+    }
+
     var title = reelCard.querySelector('.reel-title');
     if (title) modalTitle.textContent = title.textContent;
 
