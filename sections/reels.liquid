@@ -1,17 +1,26 @@
 {% comment %}
-Reels section
-Blocks: reel (product picker, image, video_url, title)
-Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval, show_title, show_price
+Reels section - Professional Interactive Design
+Blocks: reel (product picker, image, video_url, title, description)
+Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval, show_title, show_price, show_description, enable_modal, modal_style
 {% endcomment %}
 
 <section id="{{ section.id }}" class="reels-section" aria-label="{{ section.settings.heading }}">
-  <div class="reels-inner">
+  <div class="reels-container">
     {% if section.settings.heading != blank %}
-      <h2 class="reels-heading">{{ section.settings.heading }}</h2>
+      <div class="reels-header">
+        <h2 class="reels-heading">{{ section.settings.heading }}</h2>
+        {% if section.settings.show_view_all %}
+          <a href="{{ section.settings.view_all_url }}" class="reels-view-all">View All</a>
+        {% endif %}
+      </div>
     {% endif %}
 
     <div class="reels-wrapper">
-      <button class="reels-nav reels-prev" aria-label="Previous">‹</button>
+      <button class="reels-nav reels-prev" aria-label="Previous" type="button">
+        <svg class="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15,18 9,12 15,6"></polyline>
+        </svg>
+      </button>
 
       {%- assign tablet_cols = section.settings.tablet_columns | default: 3 -%}
       <div class="reels-track"
@@ -20,27 +29,76 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
            data-interval="{{ section.settings.autoplay_interval }}"
            data-desktop-cols="{{ section.settings.desktop_columns | default: 5 }}"
            data-tablet-cols="{{ tablet_cols }}"
-           data-mobile-cols="{{ section.settings.mobile_columns | default: 2 }}">
+           data-mobile-cols="{{ section.settings.mobile_columns | default: 2 }}"
+           data-enable-modal="{{ section.settings.enable_modal }}"
+           data-modal-style="{{ section.settings.modal_style }}"
+           role="region"
+           aria-label="Reels carousel">
         {% for block in section.blocks %}
           {% assign product_handle = block.settings.product %}
           {% if product_handle != blank %}
             {% assign product = all_products[product_handle] %}
           {% endif %}
 
-          <div class="reel-card">
-            <div class="reel-media">
-              {% if block.settings.video_url != blank %}
-                <video class="reel-video" playsinline muted loop preload="none" data-src="{{ block.settings.video_url }}" aria-hidden="true"></video>
-              {% elsif block.settings.image != blank %}
-                <img class="reel-image" loading="lazy" data-src="{{ block.settings.image | image_url: '720x' }}" src="{{ block.settings.image | image_url: '480x' }}" width="480" height="672" alt="{{ block.settings.title | escape }}">
-              {% elsif product and product.featured_image %}
-                <img class="reel-image" loading="lazy" data-src="{{ product.featured_image | image_url: '720x' }}" src="{{ product.featured_image | image_url: '480x' }}" width="480" height="672" alt="{{ product.title | escape }}">
-              {% else %}
-                <div class="reel-placeholder"></div>
+          <div class="reel-card" data-reel-id="{{ block.id }}" tabindex="0" role="button" aria-label="{{ block.settings.title | escape }}">
+            <div class="reel-media-container">
+              <div class="reel-media">
+                {% if block.settings.video_url != blank %}
+                  <video class="reel-video"
+                         playsinline
+                         muted
+                         loop
+                         preload="none"
+                         data-src="{{ block.settings.video_url }}"
+                         poster="{{ block.settings.image | image_url: '720x' }}"
+                         aria-label="{{ block.settings.title | escape }}">
+                    <track kind="captions" src="" label="English">
+                  </video>
+                  <div class="reel-play-indicator">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21"></polygon>
+                    </svg>
+                  </div>
+                {% elsif block.settings.image != blank %}
+                  <img class="reel-image"
+                       loading="lazy"
+                       data-src="{{ block.settings.image | image_url: '720x' }}"
+                       src="{{ block.settings.image | image_url: '480x' }}"
+                       width="480"
+                       height="672"
+                       alt="{{ block.settings.title | escape }}">
+                {% elsif product and product.featured_image %}
+                  <img class="reel-image"
+                       loading="lazy"
+                       data-src="{{ product.featured_image | image_url: '720x' }}"
+                       src="{{ product.featured_image | image_url: '480x' }}"
+                       width="480"
+                       height="672"
+                       alt="{{ product.title | escape }}">
+                {% else %}
+                  <div class="reel-placeholder">
+                    <svg class="icon-placeholder" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="9" cy="9" r="2"></circle>
+                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if section.settings.enable_modal %}
+                <button class="reel-expand-btn" aria-label="Expand view" type="button">
+                  <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 3h6v6"></path>
+                    <path d="M9 21H3v-6"></path>
+                    <path d="m21 3-7 7"></path>
+                    <path d="m3 21 7-7"></path>
+                  </svg>
+                </button>
               {% endif %}
             </div>
 
-            <div class="reel-meta">
+            <div class="reel-content">
               {% assign display_title = '' %}
               {% if product %}
                 {% assign display_title = product.title %}
@@ -49,25 +107,64 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
               {% endif %}
 
               {% if section.settings.show_title and display_title != blank %}
-                <div class="reel-title">{{ display_title }}</div>
+                <h3 class="reel-title">{{ display_title }}</h3>
+              {% endif %}
+
+              {% if section.settings.show_description and block.settings.description != blank %}
+                <p class="reel-description">{{ block.settings.description | truncate: 100 }}</p>
               {% endif %}
 
               {% if section.settings.show_price and product %}
-                <div class="reel-price">{{ product.price | money }}</div>
+                <div class="reel-price">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="price-sale">{{ product.price | money }}</span>
+                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                  {% else %}
+                    <span class="price-regular">{{ product.price | money }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {% if product %}
+                <a class="reel-link" href="{{ product.url }}" aria-label="View {{ product.title }}"></a>
               {% endif %}
             </div>
-
-            {% comment %}wrap link to product if product chosen{% endcomment %}
-            {% if product %}
-              <a class="reel-link" href="{{ product.url }}" aria-hidden="true"></a>
-            {% endif %}
           </div>
         {% endfor %}
       </div>
 
-      <button class="reels-nav reels-next" aria-label="Next">›</button>
+      <button class="reels-nav reels-next" aria-label="Next" type="button">
+        <svg class="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9,18 15,12 9,6"></polyline>
+        </svg>
+      </button>
     </div>
+
+    {% if section.settings.show_dots %}
+      <div class="reels-dots" role="tablist" aria-label="Slide indicators"></div>
+    {% endif %}
   </div>
+
+  {% if section.settings.enable_modal %}
+    <div class="reel-modal" id="reel-modal-{{ section.id }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reel-modal-title">
+      <div class="reel-modal-overlay"></div>
+      <div class="reel-modal-content">
+        <button class="reel-modal-close" aria-label="{{ 'accessibility.close' | t }}" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="reel-modal-media"></div>
+        <div class="reel-modal-info">
+          <h3 id="reel-modal-title" class="reel-modal-title"></h3>
+          <p class="reel-modal-description"></p>
+          <div class="reel-modal-price"></div>
+          <a href="#" class="reel-modal-link btn">View Product</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
   <link rel="stylesheet" href="{{ 'reels.css' | asset_url }}" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="{{ 'reels.css' | asset_url }}"></noscript>
@@ -75,16 +172,22 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
 
   {% schema %}
   {
-    "name": "Reels — Vertical Cards",
+    "name": "Reels Interactive",
     "settings": [
       {"type":"text","id":"heading","label":"Heading","default":"Reels"},
-      {"type":"select","id":"desktop_columns","label":"Columns (desktop)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"},{"value":"6","label":"6"}],"default":"5"},
+      {"type":"select","id":"desktop_columns","label":"Columns (desktop)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"},{"value":"6","label":"6"}],"default":"4"},
       {"type":"select","id":"tablet_columns","label":"Columns (tablet)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"}],"default":"3"},
       {"type":"select","id":"mobile_columns","label":"Columns (mobile)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"}],"default":"2"},
-      {"type":"checkbox","id":"autoplay","label":"Autoplay scroll","default":false},
-      {"type":"number","id":"autoplay_interval","label":"Autoplay interval (ms)","default":3000},
+      {"type":"checkbox","id":"autoplay","label":"Autoplay scroll","default":true},
+      {"type":"number","id":"autoplay_interval","label":"Autoplay interval (ms)","default":4000},
       {"type":"checkbox","id":"show_title","label":"Show title","default":true},
-      {"type":"checkbox","id":"show_price","label":"Show price when product selected","default":true}
+      {"type":"checkbox","id":"show_description","label":"Show description","default":true},
+      {"type":"checkbox","id":"show_price","label":"Show price when product selected","default":true},
+      {"type":"checkbox","id":"show_view_all","label":"Show view all link","default":false},
+      {"type":"url","id":"view_all_url","label":"View all URL"},
+      {"type":"checkbox","id":"show_dots","label":"Show slide indicators","default":true},
+      {"type":"checkbox","id":"enable_modal","label":"Enable modal view","default":true},
+      {"type":"select","id":"modal_style","label":"Modal style","options":[{"value":"fullscreen","label":"Fullscreen"},{"value":"centered","label":"Centered"}],"default":"centered"}
     ],
     "blocks": [
       {
@@ -94,7 +197,8 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
           {"type":"product","id":"product","label":"Product (optional)"},
           {"type":"image_picker","id":"image","label":"Image (fallback)"},
           {"type":"url","id":"video_url","label":"Video URL (mp4)"},
-          {"type":"text","id":"title","label":"Title (optional)"}
+          {"type":"text","id":"title","label":"Title (optional)"},
+          {"type":"textarea","id":"description","label":"Description (optional)"}
         ]
       }
     ],
