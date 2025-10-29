@@ -125,7 +125,7 @@
         "autoplay": true,
         "autoplay_interval": 3000,
         "show_title": true,
-        "show_description": true,
+        "show_description": false,
         "show_price": true,
         "show_view_all": false,
         "view_all_url": "",
