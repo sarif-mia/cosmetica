@@ -1,0 +1,105 @@
+{% comment %}
+Reels section
+Blocks: reel (product picker, image, video_url, title)
+Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval, show_title, show_price
+{% endcomment %}
+
+<section id="{{ section.id }}" class="reels-section" aria-label="{{ section.settings.heading }}">
+  <div class="reels-inner">
+    {% if section.settings.heading != blank %}
+      <h2 class="reels-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="reels-wrapper">
+      <button class="reels-nav reels-prev" aria-label="Previous">‹</button>
+
+      {%- assign tablet_cols = section.settings.tablet_columns | default: 3 -%}
+      <div class="reels-track"
+           data-section-id="{{ section.id }}"
+           data-autoplay="{{ section.settings.autoplay }}"
+           data-interval="{{ section.settings.autoplay_interval }}"
+           data-desktop-cols="{{ section.settings.desktop_columns | default: 5 }}"
+           data-tablet-cols="{{ tablet_cols }}"
+           data-mobile-cols="{{ section.settings.mobile_columns | default: 2 }}">
+        {% for block in section.blocks %}
+          {% assign product_handle = block.settings.product %}
+          {% if product_handle != blank %}
+            {% assign product = all_products[product_handle] %}
+          {% endif %}
+
+          <div class="reel-card">
+            <div class="reel-media">
+              {% if block.settings.video_url != blank %}
+                <video class="reel-video" playsinline muted loop preload="none" data-src="{{ block.settings.video_url }}" aria-hidden="true"></video>
+              {% elsif block.settings.image != blank %}
+                <img class="reel-image" loading="lazy" data-src="{{ block.settings.image | image_url: '720x' }}" src="{{ block.settings.image | image_url: '480x' }}" width="480" height="672" alt="{{ block.settings.title | escape }}">
+              {% elsif product and product.featured_image %}
+                <img class="reel-image" loading="lazy" data-src="{{ product.featured_image | image_url: '720x' }}" src="{{ product.featured_image | image_url: '480x' }}" width="480" height="672" alt="{{ product.title | escape }}">
+              {% else %}
+                <div class="reel-placeholder"></div>
+              {% endif %}
+            </div>
+
+            <div class="reel-meta">
+              {% assign display_title = '' %}
+              {% if product %}
+                {% assign display_title = product.title %}
+              {% else %}
+                {% assign display_title = block.settings.title %}
+              {% endif %}
+
+              {% if section.settings.show_title and display_title != blank %}
+                <div class="reel-title">{{ display_title }}</div>
+              {% endif %}
+
+              {% if section.settings.show_price and product %}
+                <div class="reel-price">{{ product.price | money }}</div>
+              {% endif %}
+            </div>
+
+            {% comment %}wrap link to product if product chosen{% endcomment %}
+            {% if product %}
+              <a class="reel-link" href="{{ product.url }}" aria-hidden="true"></a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="reels-nav reels-next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="{{ 'reels.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{ 'reels.css' | asset_url }}"></noscript>
+  <script defer src="{{ 'reels.js' | asset_url }}"></script>
+
+  {% schema %}
+  {
+    "name": "Reels — Vertical Cards",
+    "settings": [
+      {"type":"text","id":"heading","label":"Heading","default":"Reels"},
+      {"type":"select","id":"desktop_columns","label":"Columns (desktop)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"},{"value":"6","label":"6"}],"default":"5"},
+      {"type":"select","id":"tablet_columns","label":"Columns (tablet)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"}],"default":"3"},
+      {"type":"select","id":"mobile_columns","label":"Columns (mobile)","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"}],"default":"2"},
+      {"type":"checkbox","id":"autoplay","label":"Autoplay scroll","default":false},
+      {"type":"number","id":"autoplay_interval","label":"Autoplay interval (ms)","default":3000},
+      {"type":"checkbox","id":"show_title","label":"Show title","default":true},
+      {"type":"checkbox","id":"show_price","label":"Show price when product selected","default":true}
+    ],
+    "blocks": [
+      {
+        "type": "reel",
+        "name": "Reel",
+        "settings": [
+          {"type":"product","id":"product","label":"Product (optional)"},
+          {"type":"image_picker","id":"image","label":"Image (fallback)"},
+          {"type":"url","id":"video_url","label":"Video URL (mp4)"},
+          {"type":"text","id":"title","label":"Title (optional)"}
+        ]
+      }
+    ],
+    "max_blocks": 50,
+    "presets": [{"name":"Reels","category":"Media"}]
+  }
+  {% endschema %}
+</section>
