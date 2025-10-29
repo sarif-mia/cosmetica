@@ -261,7 +261,7 @@
   }
 {% endstyle %}
 
-<section
+<re>
   class="reels-section-{{ reels_id }}"
   data-auto-scroll="{{ section.settings.enable_auto_scroll }}"
   data-scroll-speed="{{ section.settings.auto_scroll_speed }}"
@@ -307,7 +307,6 @@
                     muted
                     playsinline
                     preload="metadata"
-                    autoplay
                   ></video>
 
                 <div class="reels-play-overlay-{{ reels_id }}">
@@ -366,7 +365,7 @@
       </button>
     </div>
   </div>
-</section>
+</br>
 
 <script>
   (function() {
@@ -560,12 +559,10 @@
       }
 
       playVideo(video, item) {
-        if (!video) return;
-        // Ensure video is muted for autoplay to work on all browsers
-        video.muted = true;
-        video.play().catch(() => {});
-        item.classList.add('playing');
-      }
+       if (!video) return;
+       video.play().catch(() => {});
+       item.classList.add('playing');
+     }
 
       pauseVideo(video) {
         if (!video) return;
