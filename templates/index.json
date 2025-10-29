@@ -56,7 +56,8 @@
           "settings": {
             "product": "bonita-hydrating-lip-oil-mocha-madness",
             "video_url": "https://cdn.shopify.com/videos/c/o/v/d80aa5c3ebe141f7b2bdc112f26dbdf0.mp4",
-            "title": ""
+            "title": "",
+            "description": ""
           }
         },
         "reel_6KrC8B": {
@@ -64,7 +65,8 @@
           "settings": {
             "product": "amber-frost",
             "video_url": "https://cdn.shopify.com/videos/c/o/v/ea7a0dca53b44bfb84de6db5fb509680.mp4",
-            "title": ""
+            "title": "",
+            "description": ""
           }
         },
         "reel_eYwMMe": {
@@ -72,7 +74,8 @@
           "settings": {
             "product": "",
             "video_url": "https://cdn.shopify.com/videos/c/o/v/a3e66163260d40b79b701813aab5ae1c.mp4",
-            "title": ""
+            "title": "",
+            "description": ""
           }
         },
         "reel_GDQnpJ": {
@@ -80,7 +83,8 @@
           "settings": {
             "product": "camilla-soft-fuschia-natural-lipstick",
             "video_url": "https://cdn.shopify.com/videos/c/o/v/dc7c72a047084dc1a6d58a94c2ade5fb.mp4",
-            "title": ""
+            "title": "",
+            "description": ""
           }
         }
       },
@@ -99,7 +103,13 @@
         "autoplay": false,
         "autoplay_interval": 3000,
         "show_title": true,
-        "show_price": true
+        "show_description": true,
+        "show_price": true,
+        "show_view_all": false,
+        "view_all_url": "",
+        "show_dots": true,
+        "enable_modal": true,
+        "modal_style": "fullscreen"
       }
     }
   },
