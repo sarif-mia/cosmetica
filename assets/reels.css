@@ -49,9 +49,20 @@
 
 .reels-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+}
+
+.reels-header--left {
+  justify-content: flex-start;
+}
+
+.reels-header--center {
+  justify-content: center;
+}
+
+.reels-header--right {
+  justify-content: flex-end;
 }
 
 .reels-heading {
@@ -201,6 +212,10 @@
   cursor: pointer;
   position: relative;
   border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.reel-card video {
+  cursor: pointer;
 }
 
 .reel-card:hover {
@@ -433,12 +448,32 @@
   overflow: hidden;
   flex-shrink: 0;
   border: 2px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .reel-product-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.reel-thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 50%;
+}
+
+.reel-thumbnail-placeholder svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #94a3b8;
 }
 
 .reel-link {

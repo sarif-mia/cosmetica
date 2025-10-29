@@ -108,6 +108,8 @@
       if (video) {
         video.muted = false;
         video.controls = true;
+        video.loop = false;
+        video.currentTime = 0;
         video.play().catch(function() { /* autoplay blocked */ });
       }
     }
@@ -370,12 +372,17 @@
 
           var vid = card.querySelector('video.reel-video');
           if (vid && !vid.hasAttribute('controls')) {
+            vid.muted = true;
+            vid.loop = true;
             vid.play().catch(function() { /* autoplay blocked */ });
           }
         } else {
           var vid2 = card.querySelector('video.reel-video');
           if (vid2 && !vid2.hasAttribute('controls')) {
-            try { vid2.pause(); } catch(e) {}
+            try {
+              vid2.pause();
+              vid2.currentTime = 0;
+            } catch(e) {}
           }
         }
       });
@@ -385,6 +392,32 @@
     var cards = track.querySelectorAll('.reel-card');
     cards.forEach(function(card) {
       io.observe(card);
+
+      // Video click to play/pause
+      var video = card.querySelector('video.reel-video');
+      if (video) {
+        video.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (video.paused) {
+            video.play().catch(function() { /* autoplay blocked */ });
+          } else {
+            video.pause();
+          }
+        });
+      }
+
+      // Product click navigation (only if not clicking on video or expand button)
+      card.addEventListener('click', function(e) {
+        // Don't navigate if clicking on video, expand button, or other interactive elements
+        if (e.target.closest('video') || e.target.closest('.reel-expand-btn')) {
+          return;
+        }
+
+        var link = card.querySelector('.reel-link');
+        if (link) {
+          window.location.href = link.href;
+        }
+      });
 
       // Keyboard navigation
       card.addEventListener('keydown', function(e) {
