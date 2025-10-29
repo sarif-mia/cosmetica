@@ -86,17 +86,28 @@
             "title": "",
             "description": ""
           }
+        },
+        "reel_tybeTq": {
+          "type": "reel",
+          "settings": {
+            "product": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/41a4c12e9d974da796bb2375d4ea65aa.mp4",
+            "title": "",
+            "description": ""
+          }
         }
       },
       "block_order": [
         "reel_GAxx9P",
         "reel_6KrC8B",
         "reel_eYwMMe",
-        "reel_GDQnpJ"
+        "reel_GDQnpJ",
+        "reel_tybeTq"
       ],
       "name": "Reels",
       "settings": {
         "heading": "Be Dunamiss • Watch the Community",
+        "heading_position": "center",
         "desktop_columns": "4",
         "tablet_columns": "3",
         "mobile_columns": "2",
@@ -105,7 +116,7 @@
         "show_title": true,
         "show_description": true,
         "show_price": true,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_url": "",
         "show_dots": true,
         "enable_modal": true,
