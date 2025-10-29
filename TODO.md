@@ -1,0 +1,4 @@
+- [ ] Change video preload from "metadata" to "auto" for better autoplay
+- [ ] Update carousel to scroll one item at a time instead of full container width
+- [ ] Use schema settings for auto-scroll enable and speed instead of hardcoded values
+- [ ] Modify play overlay to show pause icon when playing, keeping it visible for user interaction

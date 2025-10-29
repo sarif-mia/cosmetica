@@ -264,8 +264,8 @@
 
 <section
   class="reels-section-{{ reels_id }}"
-  data-auto-scroll="true"
-  data-scroll-speed="4500"
+  data-auto-scroll="{{ section.settings.enable_auto_scroll }}"
+  data-scroll-speed="{{ section.settings.auto_scroll_speed }}"
   is="reels-carousel-{{ js_id }}">
   <div class="reels-container-{{ reels_id }}">
     {% if section.settings.heading != blank or section.settings.subheading != blank %}
@@ -306,7 +306,7 @@
                     loop
                     muted
                     playsinline
-                    preload="metadata"
+                    preload="auto"
                   ></video>
 
                 <div class="reels-play-overlay-{{ reels_id }}">
@@ -405,8 +405,8 @@
 
           this.prevBtn.addEventListener('click', () => {
             this.stopAutoScroll();
-            const scrollAmount = this.carousel.offsetWidth;
-            this.carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            const itemWidth = this.items[0].offsetWidth + {{ section.settings.gap }}px;
+            this.carousel.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             if (this.isAutoScrollEnabled && !this.isVideoPlaying) {
               setTimeout(() => this.startAutoScroll(), 5000);
             }
@@ -479,13 +479,13 @@
       }
 
       scrollNext() {
-        const scrollAmount = this.carousel.offsetWidth;
+        const itemWidth = this.items[0].offsetWidth + {{ section.settings.gap }};
         const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
 
         if (this.carousel.scrollLeft >= maxScroll - 10) {
           this.carousel.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          this.carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          this.carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
         }
       }
 
