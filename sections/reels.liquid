@@ -301,13 +301,14 @@
             <div class="reels-item-{{ reels_id }}" data-reel-index="{{ i }}">
               <div class="reels-video-wrapper-{{ reels_id }}">
                 <video
-                  class="reels-video-{{ reels_id }}"
-                  src="{{ video.sources[1].url }}"
-                  loop
-                  muted
-                  playsinline
-                  preload="metadata"
-                ></video>
+                    class="reels-video-{{ reels_id }}"
+                    src="{{ video.sources[1].url | default: video.sources[0].url }}"
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata"
+                    autoplay
+                  ></video>
 
                 <div class="reels-play-overlay-{{ reels_id }}">
                   <div class="reels-play-icon-{{ reels_id }}">
@@ -402,24 +403,39 @@
       }
 
       setupNavigation() {
-        if (!this.prevBtn || !this.nextBtn) return;
+          if (!this.prevBtn || !this.nextBtn) return;
 
-        this.prevBtn.addEventListener('click', () => {
-          this.stopAutoScroll();
-          const scrollAmount = this.carousel.offsetWidth;
-          this.carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-          if (this.isAutoScrollEnabled && !this.isVideoPlaying) {
-            setTimeout(() => this.startAutoScroll(), 5000);
-          }
-        });
+          this.prevBtn.addEventListener('click', () => {
+            this.stopAutoScroll();
+            const scrollAmount = this.carousel.offsetWidth;
+            this.carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            if (this.isAutoScrollEnabled && !this.isVideoPlaying) {
+              setTimeout(() => this.startAutoScroll(), 5000);
+            }
+          });
 
-        this.nextBtn.addEventListener('click', () => {
-          this.stopAutoScroll();
-          this.scrollNext();
-          if (this.isAutoScrollEnabled && !this.isVideoPlaying) {
-            setTimeout(() => this.startAutoScroll(), 5000);
-          }
-        });
+          this.nextBtn.addEventListener('click', () => {
+            this.stopAutoScroll();
+            this.scrollNext();
+            if (this.isAutoScrollEnabled && !this.isVideoPlaying) {
+              setTimeout(() => this.startAutoScroll(), 5000);
+            }
+          });
+
+          // Fix for carousel navigation: ensure scroll works even if items are not fully visible
+          this.carousel.addEventListener('scroll', () => {
+            if (this.carousel.scrollLeft === 0) {
+              this.prevBtn.disabled = true;
+            } else {
+              this.prevBtn.disabled = false;
+            }
+            const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
+            if (this.carousel.scrollLeft >= maxScroll - 10) {
+              this.nextBtn.disabled = true;
+            } else {
+              this.nextBtn.disabled = false;
+            }
+          });
 
         this.carousel.addEventListener('mouseenter', () => {
           if (this.isAutoScrollEnabled) {
@@ -545,7 +561,8 @@
 
       playVideo(video, item) {
         if (!video) return;
-
+        // Ensure video is muted for autoplay to work on all browsers
+        video.muted = true;
         video.play().catch(() => {});
         item.classList.add('playing');
       }
