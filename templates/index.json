@@ -38,63 +38,52 @@
         "padding_bottom": 36
       }
     },
-    "1761725528b593501c": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_16beeb2_9h7U9W": {
-          "type": "ai_gen_block_16beeb2",
-          "settings": {
-            "heading": "Shop Our Reels",
-            "subheading": "",
-            "heading_alignment": "center",
-            "heading_size": 32,
-            "subheading_size": 16,
-            "enable_auto_scroll": true,
-            "auto_scroll_speed": 3000,
-            "videos_desktop": 4,
-            "videos_tablet": 3,
-            "videos_mobile": 2,
-            "container_width": 1400,
-            "gap": 16,
-            "video_border_radius": 12,
-            "video_1": "shopify://files/videos/WhatsApp Video 2025-09-01 at 15.34.57_55b397b6.mp4",
-            "product_1": "berry-mood",
-            "video_2": "shopify://files/videos/Free Lipstick Promo Video Template (Customizable) - FlexClip.mp4",
-            "product_2": "bonita-hydrating-lip-oil-mocha-madness",
-            "video_3": "shopify://files/videos/Celebrating the Last Day of Navaratri with these Gorgeous Dunamiss Shades & the Stunning @mansikumavat_  Which shade steals the spotlight for this year’s Navaratri Look Comment Below  Website Link in Bio to get you.mp4",
-            "product_3": "combo-9",
-            "video_4": "shopify://files/videos/Kojic Acid is meant for brown skin and the hyperpigmentation we face due to various reasons. It is truly your bestie!  Shop now from dunamiss.in or find us on Amazon and Flipkart!  [love dunamiss, dunamiss cosmetic.mp4",
-            "product_4": "camilla-soft-fuschia-natural-lipstick",
-            "video_5": "shopify://files/videos/Celebrating the Last Day of Navaratri with these Gorgeous Dunamiss Shades & the Stunning @mansikumavat_  Which shade steals the spotlight for this year’s Navaratri Look Comment Below  Website Link in Bio to get you.mp4",
-            "product_5": "bonita-hydrating-lip-oil-mocha-madness",
-            "video_6": "shopify://files/videos/IMG_6067.MP4",
-            "product_6": "cocoa-rush",
-            "product_7": "",
-            "product_8": "",
-            "product_9": "",
-            "product_10": "",
-            "product_11": "",
-            "product_12": "",
-            "product_13": "",
-            "product_14": "",
-            "product_15": "",
-            "background_color": "#ffffff",
-            "heading_color": "#121212",
-            "subheading_color": "#666666",
-            "section_padding_top": 40,
-            "section_padding_bottom": 40
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_16beeb2_9h7U9W"
-      ],
-      "settings": {}
+    "reels_rghxak": {
+      "type": "reels",
+      "name": "Reels video carousel",
+      "settings": {
+        "heading": "Shop Our Reels",
+        "subheading": "",
+        "heading_alignment": "center",
+        "heading_size": 32,
+        "subheading_size": 16,
+        "enable_auto_scroll": false,
+        "auto_scroll_speed": 3000,
+        "videos_desktop": 4,
+        "videos_tablet": 3,
+        "videos_mobile": 2,
+        "container_width": 1200,
+        "gap": 16,
+        "video_border_radius": 12,
+        "video_1": "shopify://files/videos/WhatsApp Video 2025-09-01 at 15.34.53_e534aeb7.mp4",
+        "product_1": "amber-frost",
+        "video_2": "shopify://files/videos/WhatsApp Video 2025-09-01 at 15.34.57_55b397b6.mp4",
+        "product_2": "blush-pop",
+        "video_3": "shopify://files/videos/Free Lipstick Promo Video Template (Customizable) - FlexClip.mp4",
+        "product_3": "camilla-soft-fuschia-natural-lipstick",
+        "video_4": "shopify://files/videos/Want to look as refreshing and beautiful as Tejasswi Head over to our website or find us on Amazon and Flipkart to shop her favourites!  [love dunamiss, dunamiss cosmetics, trending, explore, fyp, featured, lipstic.mp4",
+        "product_4": "champagne-kiss-nude-pink-smooth-matte-finish",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "product_9": "",
+        "product_10": "",
+        "product_11": "",
+        "product_12": "",
+        "product_13": "",
+        "product_14": "",
+        "product_15": "",
+        "background_color": "#FFFFFF",
+        "heading_color": "#121212",
+        "subheading_color": "#666666",
+        "section_padding_top": 40,
+        "section_padding_bottom": 40
+      }
     }
   },
   "order": [
     "featured_collection_B9RcXU",
-    "1761725528b593501c"
+    "reels_rghxak"
   ]
 }
