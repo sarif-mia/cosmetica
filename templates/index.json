@@ -9,6 +9,60 @@
  */
 {
   "sections": {
+    "1761725528b593501c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_16beeb2_9h7U9W": {
+          "type": "ai_gen_block_16beeb2",
+          "settings": {
+            "heading": "Shop Our Reels",
+            "subheading": "",
+            "heading_alignment": "center",
+            "heading_size": 32,
+            "subheading_size": 16,
+            "enable_auto_scroll": true,
+            "auto_scroll_speed": 3000,
+            "videos_desktop": 4,
+            "videos_tablet": 3,
+            "videos_mobile": 2,
+            "container_width": 1200,
+            "gap": 16,
+            "video_border_radius": 12,
+            "video_1": "shopify://files/videos/WhatsApp Video 2025-09-01 at 15.34.57_55b397b6.mp4",
+            "product_1": "berry-mood",
+            "video_2": "shopify://files/videos/Free Lipstick Promo Video Template (Customizable) - FlexClip.mp4",
+            "product_2": "bonita-hydrating-lip-oil-mocha-madness",
+            "video_3": "shopify://files/videos/Celebrating the Last Day of Navaratri with these Gorgeous Dunamiss Shades & the Stunning @mansikumavat_  Which shade steals the spotlight for this year’s Navaratri Look Comment Below  Website Link in Bio to get you.mp4",
+            "product_3": "combo-9",
+            "video_4": "shopify://files/videos/Kojic Acid is meant for brown skin and the hyperpigmentation we face due to various reasons. It is truly your bestie!  Shop now from dunamiss.in or find us on Amazon and Flipkart!  [love dunamiss, dunamiss cosmetic.mp4",
+            "product_4": "camilla-soft-fuschia-natural-lipstick",
+            "video_5": "shopify://files/videos/Celebrating the Last Day of Navaratri with these Gorgeous Dunamiss Shades & the Stunning @mansikumavat_  Which shade steals the spotlight for this year’s Navaratri Look Comment Below  Website Link in Bio to get you.mp4",
+            "product_5": "bonita-hydrating-lip-oil-mocha-madness",
+            "video_6": "shopify://files/videos/IMG_6067.MP4",
+            "product_6": "cocoa-rush",
+            "product_7": "",
+            "product_8": "",
+            "product_9": "",
+            "product_10": "",
+            "product_11": "",
+            "product_12": "",
+            "product_13": "",
+            "product_14": "",
+            "product_15": "",
+            "background_color": "#FFFFFF",
+            "heading_color": "#121212",
+            "subheading_color": "#666666",
+            "section_padding_top": 40,
+            "section_padding_bottom": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_16beeb2_9h7U9W"
+      ],
+      "settings": {}
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -47,103 +101,10 @@
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
-    },
-    "reels_VVH8mG": {
-      "type": "reels",
-      "blocks": {
-        "reel_GAxx9P": {
-          "type": "reel",
-          "settings": {
-            "product": "bonita-hydrating-lip-oil-mocha-madness",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/d80aa5c3ebe141f7b2bdc112f26dbdf0.mp4",
-            "title": "",
-            "description": "",
-            "badge": "New"
-          }
-        },
-        "reel_6KrC8B": {
-          "type": "reel",
-          "settings": {
-            "product": "amber-frost",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/ea7a0dca53b44bfb84de6db5fb509680.mp4",
-            "title": "",
-            "description": "",
-            "badge": "Trending"
-          }
-        },
-        "reel_eYwMMe": {
-          "type": "reel",
-          "settings": {
-            "product": "",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/a3e66163260d40b79b701813aab5ae1c.mp4",
-            "title": "",
-            "description": "",
-            "badge": ""
-          }
-        },
-        "reel_GDQnpJ": {
-          "type": "reel",
-          "settings": {
-            "product": "camilla-soft-fuschia-natural-lipstick",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/dc7c72a047084dc1a6d58a94c2ade5fb.mp4",
-            "title": "",
-            "description": "",
-            "badge": ""
-          }
-        },
-        "reel_tybeTq": {
-          "type": "reel",
-          "settings": {
-            "product": "",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/41a4c12e9d974da796bb2375d4ea65aa.mp4",
-            "title": "",
-            "description": "",
-            "badge": ""
-          }
-        },
-        "reel_binaHQ": {
-          "type": "reel",
-          "settings": {
-            "product": "",
-            "image": "shopify://shop_images/LuciaSoftRoseSatinLipstick-1.webp",
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/ae322999862e48b1a96e3381c1499185.mp4",
-            "title": "",
-            "description": "",
-            "badge": ""
-          }
-        }
-      },
-      "block_order": [
-        "reel_GAxx9P",
-        "reel_6KrC8B",
-        "reel_eYwMMe",
-        "reel_GDQnpJ",
-        "reel_tybeTq",
-        "reel_binaHQ"
-      ],
-      "name": "Reels",
-      "settings": {
-        "heading": "Be Dunamiss • Watch the Community",
-        "heading_position": "center",
-        "desktop_columns": "4",
-        "tablet_columns": "3",
-        "mobile_columns": "2",
-        "autoplay": true,
-        "autoplay_interval": 3000,
-        "show_title": true,
-        "show_description": false,
-        "show_price": true,
-        "show_view_all": false,
-        "view_all_url": "",
-        "show_dots": true,
-        "enable_modal": true,
-        "modal_style": "fullscreen",
-        "full_width": true
-      }
     }
   },
   "order": [
-    "image_banner",
-    "reels_VVH8mG"
+    "1761725528b593501c",
+    "image_banner"
   ]
 }
