@@ -1,4 +1,4 @@
-{% assign reels_id = section.id | replace: '_', '' | downcase %}
+{% assign reels_id = 'template--20843993301227reelsrghxak' %}
 
 {% style %}
   .reels-section-{{ reels_id }} {
@@ -261,12 +261,10 @@
   }
 {% endstyle %}
 
-<re>
+<section
   class="reels-section-{{ reels_id }}"
-  data-auto-scroll="{{ section.settings.enable_auto_scroll }}"
-  data-scroll-speed="{{ section.settings.auto_scroll_speed }}"
-  {{ section.shopify_attributes }}
->
+  data-auto-scroll="true"
+  data-scroll-speed="4500">
   <div class="reels-container-{{ reels_id }}">
     {% if section.settings.heading != blank or section.settings.subheading != blank %}
       <div class="reels-header-{{ reels_id }}">
@@ -365,7 +363,6 @@
       </button>
     </div>
   </div>
-</br>
 
 <script>
   (function() {
@@ -984,3 +981,4 @@
   ]
 }
 {% endschema %}
+</section>
