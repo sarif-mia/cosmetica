@@ -177,6 +177,9 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+  /* allow the track to take remaining space between nav buttons */
+  flex: 1 1 auto;
+  min-width: 0;
   position: relative;
 }
 
