@@ -103,13 +103,16 @@
       // Load full quality media
       lazyLoadMedia(modalMedia);
 
-      // Handle video in modal
+      // Handle video in modal - full screen video experience
       var video = modalMedia.querySelector('video');
       if (video) {
         video.muted = false;
         video.controls = true;
         video.loop = false;
         video.currentTime = 0;
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'contain';
         video.play().catch(function() { /* autoplay blocked */ });
       }
     }
@@ -393,31 +396,40 @@
     cards.forEach(function(card) {
       io.observe(card);
 
-      // Video click to play/pause
+      // Video click to open popup instead of playing inline
       var video = card.querySelector('video.reel-video');
       if (video) {
         video.addEventListener('click', function(e) {
           e.stopPropagation();
-          if (video.paused) {
-            video.play().catch(function() { /* autoplay blocked */ });
-          } else {
-            video.pause();
+          openModal(card);
+        });
+      }
+
+      // Product name click navigation (only product name, not entire card)
+      var productTitle = card.querySelector('.reel-product-title');
+      if (productTitle) {
+        productTitle.style.cursor = 'pointer';
+        productTitle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var link = card.querySelector('.reel-link');
+          if (link) {
+            window.location.href = link.href;
           }
         });
       }
 
-      // Product click navigation (only if not clicking on video or expand button)
-      card.addEventListener('click', function(e) {
-        // Don't navigate if clicking on video, expand button, or other interactive elements
-        if (e.target.closest('video') || e.target.closest('.reel-expand-btn')) {
-          return;
-        }
-
-        var link = card.querySelector('.reel-link');
-        if (link) {
-          window.location.href = link.href;
-        }
-      });
+      // Product price click navigation
+      var productPrice = card.querySelector('.reel-product-price');
+      if (productPrice) {
+        productPrice.style.cursor = 'pointer';
+        productPrice.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var link = card.querySelector('.reel-link');
+          if (link) {
+            window.location.href = link.href;
+          }
+        });
+      }
 
       // Keyboard navigation
       card.addEventListener('keydown', function(e) {
@@ -433,10 +445,19 @@
         }
       });
 
-      // Expand button
+      // Expand button and play indicator both open modal
       var expandBtn = card.querySelector('.reel-expand-btn');
+      var playIndicator = card.querySelector('.reel-play-indicator');
+
       if (expandBtn) {
         expandBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openModal(card);
+        });
+      }
+
+      if (playIndicator) {
+        playIndicator.addEventListener('click', function(e) {
           e.stopPropagation();
           openModal(card);
         });
