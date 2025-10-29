@@ -516,52 +516,58 @@
       }
 
       setupVideoControls() {
-        this.items.forEach((item) => {
-          const video = item.querySelector('.reels-video-{{ reels_id }}');
-          if (!video) return;
+          this.items.forEach((item) => {
+            const video = item.querySelector('.reels-video-{{ reels_id }}');
+            if (!video) return;
 
-          video.addEventListener('play', () => {
-            this.isVideoPlaying = true;
-            this.stopAutoScroll();
+            video.addEventListener('play', () => {
+              this.isVideoPlaying = true;
+              this.stopAutoScroll();
+            });
+
+            video.addEventListener('pause', () => {
+              this.isVideoPlaying = false;
+              if (this.isAutoScrollEnabled) {
+                setTimeout(() => {
+                  if (!this.isVideoPlaying) {
+                    this.startAutoScroll();
+                  }
+                }, 1000);
+              }
+            });
+
+            video.addEventListener('ended', () => {
+              this.isVideoPlaying = false;
+              if (this.isAutoScrollEnabled) {
+                this.startAutoScroll();
+              }
+            });
+
+            item.addEventListener('click', (e) => {
+              if (e.target.closest('.reels-product-tag-{{ reels_id }}')) return;
+              if (video.paused) {
+                this.playVideo(video, item);
+              } else {
+                this.pauseVideo(video);
+              }
+            });
+
+            // Ensure video plays when in view
+            video.addEventListener('canplay', () => {
+              if (item.classList.contains('playing')) {
+                video.play();
+              }
+            });
           });
-
-          video.addEventListener('pause', () => {
-            this.isVideoPlaying = false;
-            if (this.isAutoScrollEnabled) {
-              setTimeout(() => {
-                if (!this.isVideoPlaying) {
-                  this.startAutoScroll();
-                }
-              }, 1000);
-            }
-          });
-
-          video.addEventListener('ended', () => {
-            this.isVideoPlaying = false;
-            if (this.isAutoScrollEnabled) {
-              this.startAutoScroll();
-            }
-          });
-
-          item.addEventListener('click', (e) => {
-            if (e.target.closest('.reels-product-tag-{{ reels_id }}')) {
-              return;
-            }
-
-            if (video.paused) {
-              this.playVideo(video, item);
-            } else {
-              this.pauseVideo(video);
-            }
-          });
-        });
-      }
+        }
 
       playVideo(video, item) {
-       if (!video) return;
-       video.play().catch(() => {});
-       item.classList.add('playing');
-     }
+        if (!video) return;
+        video.muted = true;
+        video.autoplay = true;
+        video.play().catch(() => {});
+        item.classList.add('playing');
+      }
 
       pauseVideo(video) {
         if (!video) return;
