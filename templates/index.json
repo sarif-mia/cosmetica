@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -29,47 +38,73 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "reels_VVH8mG": {
+      "type": "reels",
+      "blocks": {
+        "reel_GAxx9P": {
+          "type": "reel",
+          "settings": {
+            "product": "bonita-hydrating-lip-oil-mocha-madness",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/d80aa5c3ebe141f7b2bdc112f26dbdf0.mp4",
+            "title": ""
+          }
+        },
+        "reel_6KrC8B": {
+          "type": "reel",
+          "settings": {
+            "product": "amber-frost",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/ea7a0dca53b44bfb84de6db5fb509680.mp4",
+            "title": ""
+          }
+        },
+        "reel_eYwMMe": {
+          "type": "reel",
+          "settings": {
+            "product": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/a3e66163260d40b79b701813aab5ae1c.mp4",
+            "title": ""
+          }
+        },
+        "reel_GDQnpJ": {
+          "type": "reel",
+          "settings": {
+            "product": "camilla-soft-fuschia-natural-lipstick",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/dc7c72a047084dc1a6d58a94c2ade5fb.mp4",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "reel_GAxx9P",
+        "reel_6KrC8B",
+        "reel_eYwMMe",
+        "reel_GDQnpJ"
+      ],
+      "name": "Reels",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "heading": "Be Dunamiss • Watch the Community",
+        "desktop_columns": "4",
+        "tablet_columns": "3",
+        "mobile_columns": "2",
+        "autoplay": false,
+        "autoplay_interval": 3000,
+        "show_title": true,
+        "show_price": true
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "reels_VVH8mG"
   ]
 }
