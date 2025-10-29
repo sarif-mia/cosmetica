@@ -1,10 +1,10 @@
 {% comment %}
 Reels section - Professional Interactive Design
 Blocks: reel (product picker, image, video_url, title, description)
-Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval, show_title, show_price, show_description, enable_modal, modal_style
+Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval, show_title, show_price, show_description, enable_modal, modal_style, full_width
 {% endcomment %}
 
-<section id="{{ section.id }}" class="reels-section" aria-label="{{ section.settings.heading }}">
+<section id="{{ section.id }}" class="reels-section{% if section.settings.full_width %} reels-section--full-width{% endif %}" aria-label="{{ section.settings.heading }}">
   <div class="reels-container">
     {% if section.settings.heading != blank %}
       <div class="reels-header">
@@ -98,37 +98,34 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
               {% endif %}
             </div>
 
-            <div class="reel-content">
-              {% assign display_title = '' %}
-              {% if product %}
-                {% assign display_title = product.title %}
-              {% else %}
-                {% assign display_title = block.settings.title %}
-              {% endif %}
-
-              {% if section.settings.show_title and display_title != blank %}
-                <h3 class="reel-title">{{ display_title }}</h3>
-              {% endif %}
-
-              {% if section.settings.show_description and block.settings.description != blank %}
-                <p class="reel-description">{{ block.settings.description | truncate: 100 }}</p>
-              {% endif %}
-
-              {% if section.settings.show_price and product %}
-                <div class="reel-price">
-                  {% if product.compare_at_price > product.price %}
-                    <span class="price-sale">{{ product.price | money }}</span>
-                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                  {% else %}
-                    <span class="price-regular">{{ product.price | money }}</span>
+            {% if product %}
+              <div class="reel-product-badge">
+                <div class="reel-product-info">
+                  {% if section.settings.show_title %}
+                    <div class="reel-product-title">{{ product.title }}</div>
+                  {% endif %}
+                  {% if section.settings.show_price %}
+                    <div class="reel-product-price">
+                      {% if product.compare_at_price > product.price %}
+                        <span class="price-sale">{{ product.price | money }}</span>
+                        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                      {% else %}
+                        <span class="price-regular">{{ product.price | money }}</span>
+                      {% endif %}
+                    </div>
                   {% endif %}
                 </div>
-              {% endif %}
+                {% if product.featured_image %}
+                  <div class="reel-product-thumbnail">
+                    <img src="{{ product.featured_image | image_url: '50x50', crop: 'center' }}" alt="{{ product.title }}" loading="lazy" width="50" height="50">
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
 
-              {% if product %}
-                <a class="reel-link" href="{{ product.url }}" aria-label="View {{ product.title }}"></a>
-              {% endif %}
-            </div>
+            {% if product %}
+              <a class="reel-link" href="{{ product.url }}" aria-label="View {{ product.title }}"></a>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
@@ -187,7 +184,8 @@ Settings: heading, desktop_columns, mobile_columns, autoplay, autoplay_interval,
       {"type":"url","id":"view_all_url","label":"View all URL"},
       {"type":"checkbox","id":"show_dots","label":"Show slide indicators","default":true},
       {"type":"checkbox","id":"enable_modal","label":"Enable modal view","default":true},
-      {"type":"select","id":"modal_style","label":"Modal style","options":[{"value":"fullscreen","label":"Fullscreen"},{"value":"centered","label":"Centered"}],"default":"centered"}
+      {"type":"select","id":"modal_style","label":"Modal style","options":[{"value":"fullscreen","label":"Fullscreen"},{"value":"centered","label":"Centered"}],"default":"centered"},
+      {"type":"checkbox","id":"full_width","label":"Full width layout","default":false}
     ],
     "blocks": [
       {
