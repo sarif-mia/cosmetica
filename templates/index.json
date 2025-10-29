@@ -95,6 +95,16 @@
             "title": "",
             "description": ""
           }
+        },
+        "reel_binaHQ": {
+          "type": "reel",
+          "settings": {
+            "product": "",
+            "image": "shopify://shop_images/LuciaSoftRoseSatinLipstick-1.webp",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/ae322999862e48b1a96e3381c1499185.mp4",
+            "title": "",
+            "description": ""
+          }
         }
       },
       "block_order": [
@@ -102,7 +112,8 @@
         "reel_6KrC8B",
         "reel_eYwMMe",
         "reel_GDQnpJ",
-        "reel_tybeTq"
+        "reel_tybeTq",
+        "reel_binaHQ"
       ],
       "name": "Reels",
       "settings": {
