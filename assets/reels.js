@@ -112,7 +112,7 @@
         video.currentTime = 0;
         video.style.width = '100%';
         video.style.height = '100%';
-        video.style.objectFit = 'contain';
+        video.style.objectFit = 'cover';
         video.play().catch(function() { /* autoplay blocked */ });
       }
     }
