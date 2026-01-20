@@ -837,7 +837,7 @@ class SlideLazyLoad {
       await this._loadScriptsFromListJs(this.delayedScriptsJs.async),
       await this._triggerDOMContentLoadedJs(),
       await this._triggerWindowLoadJs(),
-      window.dispatchEvent(new Event("glozinspeed-allScriptsLoaded"));
+      window.dispatchEvent(new Event("cosmeticaspeed-allScriptsLoaded"));
   }
   async _loadScriptsFromListJs(e) {
     const t = e.shift();
@@ -854,7 +854,7 @@ class SlideLazyLoad {
         [...e.attributes].forEach((e) => {
           let t = e.nodeName;
           "type" !== t &&
-            ("data-glozinlazy-type" === t && ((t = "type"), (n = e.nodeValue)),
+            ("data-cosmeticatlazy-type" === t && ((t = "type"), (n = e.nodeValue)),
             s.setAttribute(t, e.nodeValue));
         }),
           e.hasAttribute("src")
@@ -867,23 +867,23 @@ class SlideLazyLoad {
   async _triggerDOMContentLoadedJs() {
     (this.domReadyFired = !0),
       await this._requestAnimFrame(),
-      document.dispatchEvent(new Event("glozinspeed-DOMContentLoaded")),
+      document.dispatchEvent(new Event("cosmeticaspeed-DOMContentLoaded")),
       await this._requestAnimFrame(),
-      window.dispatchEvent(new Event("glozinspeed-DOMContentLoaded")),
+      window.dispatchEvent(new Event("cosmeticaspeed-DOMContentLoaded")),
       await this._requestAnimFrame(),
-      document.dispatchEvent(new Event("glozinspeed-readystatechange")),
+      document.dispatchEvent(new Event("cosmeticaspeed-readystatechange")),
       await this._requestAnimFrame(),
-      document.glozinonreadystatechange && document.glozinonreadystatechange();
+      document.cosmeticaonreadystatechange && document.cosmeticaonreadystatechange();
   }
   async _triggerWindowLoadJs() {
     await this._requestAnimFrame(),
-      window.dispatchEvent(new Event("glozinspeed-load")),
+      window.dispatchEvent(new Event("cosmeticaspeed-load")),
       await this._requestAnimFrame(),
-      window.glozinonload && window.glozinonload(),
+      window.cosmeticaonload && window.cosmeticaonload(),
       await this._requestAnimFrame(),
-      window.dispatchEvent(new Event("glozinspeed-pageshow")),
+      window.dispatchEvent(new Event("cosmeticaspeed-pageshow")),
       await this._requestAnimFrame(),
-      window.glozinonpageshow && window.glozinonpageshow();
+      window.cosmeticaonpageshow && window.cosmeticaonpageshow();
   }
   async _requestAnimFrame() {
     return new Promise((e) => requestAnimationFrame(e));

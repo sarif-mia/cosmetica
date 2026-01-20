@@ -6,7 +6,7 @@
 
 ## Overview
 
-Cosmetica is a modern, responsive Shopify theme designed for beauty, cosmetics, fashion, and general retail stores. The theme has been customized from the original Glozin theme with various enhancements and improvements.
+Cosmetica is a modern, responsive Shopify theme designed for beauty, cosmetics, fashion, and general retail stores.
 
 ## Features
 
@@ -36,8 +36,11 @@ Cosmetica is a modern, responsive Shopify theme designed for beauty, cosmetics, 
 
 1. **License Removal** - Removed all license validation code to make the theme free to use
 2. **Clickable Slides** - Modified slideshow to make entire slides clickable instead of just buttons
-3. **Theme Renaming** - Renamed from "Glozin" to "Cosmetica"
+3. **Theme Renaming** - Renamed from original theme to "Cosmetica"
 4. **Bug Fixes** - Fixed potential nested anchor tag issues in slides
+5. **Author Information** - Updated author information to Sarif Mia
+6. **Storage Keys** - Updated localStorage keys from glozin__ to cosmetica__
+7. **Copyright Updates** - Updated copyright text throughout the theme
 
 ## Theme Structure
 

@@ -441,7 +441,7 @@ var wishlistHeader = (function () {
     },
     handleCount: function () {
       const wishlist = document.querySelectorAll(".wishlist-count");
-      const items = JSON.parse(localStorage.getItem("glozin__wishlist-items"));
+      const items = JSON.parse(localStorage.getItem("cosmetica__wishlist-items"));
       wishlist.forEach((item) => {
         item.innerText = items !== null && items.length != 0 ? items.length : 0;
       });
@@ -4685,7 +4685,7 @@ class MiniCartRemoveButton extends HTMLElement {
     this.addEventListener("click", (event) => {
       event.preventDefault();
       const wishlist_items = JSON.parse(
-        localStorage.getItem("glozin__wishlist-items")
+        localStorage.getItem("cosmetica__wishlist-items")
       );
       const productHandle = this.dataset.productHandle;
       let index = wishlist_items?.indexOf(productHandle);
@@ -4736,7 +4736,7 @@ class MiniCartWishlistAction extends HTMLElement {
         event.preventDefault();
         const target = event.currentTarget;
         const localListProductIds = localStorage.getItem(
-          "glozin__wishlist-items"
+          "cosmetica__wishlist-items"
         );
         let listProductIds = [];
         let productId = target.dataset.productId;
@@ -4753,7 +4753,7 @@ class MiniCartWishlistAction extends HTMLElement {
           listProductIds.push(productId);
         }
         const stringifyListProductIds = JSON.stringify(listProductIds);
-        localStorage.setItem("glozin__wishlist-items", stringifyListProductIds);
+        localStorage.setItem("cosmetica__wishlist-items", stringifyListProductIds);
         this.eventRemove(target);
       }
     );
@@ -4969,7 +4969,7 @@ class ButtonWishlist extends HTMLElement {
   }
 
   initializeWishlistStatus() {
-    const localListProductIds = localStorage.getItem("glozin__wishlist-items");
+    const localListProductIds = localStorage.getItem("cosmetica__wishlist-items");
     if (!localListProductIds) return;
     const parseLocalListProductIds = JSON.parse(localListProductIds);
     const isProductIdContained = parseLocalListProductIds.includes(
@@ -5010,7 +5010,7 @@ class ButtonWishlist extends HTMLElement {
   }
 
   onThisClick() {
-    const localListProductIds = localStorage.getItem("glozin__wishlist-items");
+    const localListProductIds = localStorage.getItem("cosmetica__wishlist-items");
     const allThisProductIds = document.querySelectorAll(
       `button-wishlist[data-product-id="${this.productId}"]`
     );
@@ -5062,7 +5062,7 @@ class ButtonWishlist extends HTMLElement {
       this.actionWhenClicked(allThisProductIds, true);
     }
     const stringifyListProductIds = JSON.stringify(listProductIds);
-    localStorage.setItem("glozin__wishlist-items", stringifyListProductIds);
+    localStorage.setItem("cosmetica__wishlist-items", stringifyListProductIds);
     wishlistHeader.init();
   }
 }
@@ -5087,7 +5087,7 @@ class ButtonCompare extends HTMLElement {
   }
 
   initializeCompareStatus() {
-    const localListProductIds = localStorage.getItem("glozin__compare-items");
+    const localListProductIds = localStorage.getItem("cosmetica__compare-items");
     if (!localListProductIds) return;
     const parseLocalListProductIds = JSON.parse(localListProductIds);
     const isProductIdContained = parseLocalListProductIds.includes(
@@ -5128,7 +5128,7 @@ class ButtonCompare extends HTMLElement {
   }
 
   onThisClick() {
-    const localListProductIds = localStorage.getItem("glozin__compare-items");
+    const localListProductIds = localStorage.getItem("cosmetica__compare-items");
     const allThisProductIds = document.querySelectorAll(
       `button-compare[data-product-id="${this.productId}"]`
     );
@@ -5168,7 +5168,7 @@ class ButtonCompare extends HTMLElement {
       this.actionWhenClicked(allThisProductIds, true);
     }
     const stringifyListProductIds = JSON.stringify(listProductIds);
-    localStorage.setItem("glozin__compare-items", stringifyListProductIds);
+    localStorage.setItem("cosmetica__compare-items", stringifyListProductIds);
   }
 }
 customElements.define("button-compare", ButtonCompare);
@@ -8191,7 +8191,7 @@ class ProductRecentlyViewed extends SlideSection {
   }
   initData() {
     var savedProductsArr = JSON.parse(
-      localStorage.getItem("glozin__recently-viewed-products")
+      localStorage.getItem("cosmetica__recently-viewed-products")
     );
     this.getStoredProducts(savedProductsArr);
   }

@@ -987,7 +987,7 @@ document.addEventListener("DOMContentLoaded", function () {
         storedProducts.pop();
       }
       localStorage.setItem(
-        "glozin__recently-viewed-products",
+        "cosmetica__recently-viewed-products",
         JSON.stringify(storedProducts)
       );
     } else {
@@ -997,7 +997,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       storedProducts.unshift(currentProductID);
       localStorage.setItem(
-        "glozin__recently-viewed-products",
+        "cosmetica__recently-viewed-products",
         JSON.stringify(storedProducts)
       );
     }
@@ -1007,7 +1007,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (prodData != null) {
     var productJson = JSON.parse(prodData.innerHTML);
     var storedProducts = JSON.parse(
-      localStorage.getItem("glozin__recently-viewed-products")
+      localStorage.getItem("cosmetica__recently-viewed-products")
     );
     addProductEntry(productJson, storedProducts);
   }

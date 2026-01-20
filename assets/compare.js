@@ -8,7 +8,7 @@ var BlsComparePageShopify = (function () {
 
     init: function () {
       const compare_items = JSON.parse(
-        localStorage.getItem("glozin__compare-items")
+        localStorage.getItem("cosmetica__compare-items")
       );
       const compareDiv = document.querySelector(".compare-page-main");
       const div_no_product = compareDiv.querySelector(".compare-no-product-js");
@@ -130,7 +130,7 @@ class CompareRemove extends HTMLElement {
       }
     }
     const stringifyListProductIds = JSON.stringify(listProductIds);
-    localStorage.setItem("glozin__compare-items", stringifyListProductIds);
+    localStorage.setItem("cosmetica__compare-items", stringifyListProductIds)
   }
 }
 customElements.define("compare-remove", CompareRemove);
