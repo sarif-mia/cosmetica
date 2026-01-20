@@ -716,7 +716,7 @@
           "fade_in": "Fade in",
           "zoom": "Zoom"
         }
-      },
+      }
     },
     "store_information": {
       "name": "Store information",
@@ -1620,7 +1620,7 @@
         "rows": {
           "label": "Rows"
         },
-        "no_gap": "No gap",
+        "no_gap": "No gap"
       },
       "settings": {
         "show_separator_line": {
@@ -2481,7 +2481,7 @@
         },
         "slide_width": {
           "label": "Slide width"
-        },
+        }
       }
     },
     "testimonials_product": {
@@ -3330,7 +3330,7 @@
           "background_color": {
             "label": "Background color",
             "enable": "Enable backglound color"
-          },
+          }
         },
         "icon_setting": {
           "label": "Icon setting"
@@ -3425,7 +3425,7 @@
           },
           "image_width_heading": {
             "label": "Image width on heading"
-          },
+          }
         },
         "block_settings": {
           "label": "Block setting",
@@ -3451,15 +3451,14 @@
           "position": {
             "label": "Position image",
             "right": "right",
-            "left": "left",
+            "left": "left"
           },
           "width_img": {
             "label": "Width image"
           },
           "width_heading": {
             "label": "Width heading"
-          },
-          
+          }
         }
       },
     "multi_content": {
@@ -3772,7 +3771,7 @@
         "collection_title": {
           "label": "Collection title",
           "info": "Leave blank to use collection's title"
-        },
+        }
       }
     },
     "collection-packery": {
@@ -4525,10 +4524,9 @@
         "overlay_style": "Overlay style",
         "gradient_direction":"Gradient direction",
         "up": "Up",
-        "down": "Down",
-
-      },
-    },
+        "down": "Down"
+      }
+    }
   },
   "blocks": {
     "general": {
